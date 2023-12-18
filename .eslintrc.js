@@ -3,16 +3,18 @@ module.exports = {
   env: {
     node: true,
   },
+  parser: "@typescript-eslint/parser",
+  ignorePatterns: ['**/payload-types.ts'],
+  plugins: ["@typescript-eslint", 'prettier'],
   extends: [
-    "plugin:vue/vue3-essential",
+    'plugin:@next/next/recommended',
+    '@payloadcms',
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:cypress/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
   rules: {
-    // "no-console": import.meta.env.NODE_ENV === "production" ? "warn" : "off",
-    // "no-debugger": import.meta.env.NODE_ENV === "production" ? "warn" : "off",
-    "vue/multi-word-component-names": "off",
     "prettier/prettier": [
       "error",
       {
