@@ -44,7 +44,7 @@ const Endpoints: CollectionConfig = {
       type: 'date',
       label: 'Last Updated',
       defaultValue: () => {
-        return new Date();
+        return new Date()
       },
       admin: {
         position: 'sidebar',

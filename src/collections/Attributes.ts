@@ -1,7 +1,8 @@
 import type { CollectionConfig } from 'payload/types'
+
 import richText from '../fields/richText'
 import label from '../fields/richText/label'
-import largeBody from "../fields/richText/largeBody";
+import largeBody from '../fields/richText/largeBody'
 
 const Attributes: CollectionConfig = {
   slug: 'attributes',
