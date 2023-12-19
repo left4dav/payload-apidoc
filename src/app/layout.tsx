@@ -2,9 +2,6 @@ import type { Metadata } from 'next'
 
 import React from 'react'
 
-import { AdminBar } from './_components/AdminBar'
-import { Footer } from './_components/Footer'
-import { Header } from './_components/Header'
 import './_css/app.scss'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
@@ -20,10 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Providers>
-          <AdminBar />
-          <Header />
           {children}
-          <Footer />
         </Providers>
       </body>
     </html>

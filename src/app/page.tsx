@@ -1,5 +1,5 @@
-import PageTemplate, { generateMetadata } from './(pages)/[slug]/page'
-
-export default PageTemplate
-
-export { generateMetadata }
+export default () => {
+  return (
+    <h1>My index page</h1>
+  );
+}
