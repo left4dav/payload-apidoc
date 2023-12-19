@@ -1,17 +1,18 @@
-import type { CollectionConfig } from 'payload/types'
+import type {CollectionConfig} from 'payload/types'
 
-import { admins } from '../../access/admins'
-import { adminsOrPublished } from '../../access/adminsOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock'
-import { CallToAction } from '../../blocks/CallToAction'
-import { Content } from '../../blocks/Content'
-import { ContentMedia } from '../../blocks/ContentMedia'
-import { MediaBlock } from '../../blocks/MediaBlock'
-import { hero } from '../../fields/hero'
-import { slugField } from '../../fields/slug'
-import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
-import { populatePublishedDate } from '../../hooks/populatePublishedDate'
-import { revalidatePage } from './hooks/revalidatePage'
+import {admins} from '../../access/admins'
+import {adminsOrPublished} from '../../access/adminsOrPublished'
+import {Admonition} from '../../blocks/Admonition'
+import {Archive} from '../../blocks/ArchiveBlock'
+import {CallToAction} from '../../blocks/CallToAction'
+import {Content} from '../../blocks/Content'
+import {ContentMedia} from '../../blocks/ContentMedia'
+import {MediaBlock} from '../../blocks/MediaBlock'
+import {hero} from '../../fields/hero'
+import {slugField} from '../../fields/slug'
+import {populateArchiveBlock} from '../../hooks/populateArchiveBlock'
+import {populatePublishedDate} from '../../hooks/populatePublishedDate'
+import {revalidatePage} from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   access: {
@@ -58,7 +59,7 @@ export const Pages: CollectionConfig = {
           fields: [
             {
               name: 'layout',
-              blocks: [CallToAction, Content, ContentMedia, MediaBlock, Archive],
+              blocks: [Admonition, CallToAction, Content, ContentMedia, MediaBlock, Archive],
               required: true,
               type: 'blocks',
             },
