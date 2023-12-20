@@ -5,10 +5,9 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
-import Attributes from './collections/Attributes'
 import Endpoints from './collections/Endpoints'
-import Responses from './collections/Responses'
 import Users from './collections/Users'
+import Parameters from './collections/Parameters'
 
 // noinspection TypeScriptValidateTypes
 export default buildConfig({
@@ -16,7 +15,7 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
-  collections: [Users, Attributes, Endpoints, Responses],
+  collections: [Users, Parameters, Endpoints],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),

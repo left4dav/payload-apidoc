@@ -46,28 +46,89 @@ const Endpoints: CollectionConfig = {
         {
             name: 'attributes',
             label: 'Attributes',
-            type: 'text',
+            type: 'array',
+            fields: [
+                {
+                    name: 'subParameters',
+                    label: 'Children',
+                    type: 'relationship',
+                    relationTo: 'parameters',
+                    hasMany: true,
+                    filterOptions: ({id}) => {
+                        return {
+                            id: {
+                                not_in: [id],
+                            },
+                        }
+                    },
+                },
+            ]
         },
         {
-            name: 'body-parameters',
+            name: 'bodyparams',
             label: 'BodyParameters',
-            type: 'text',
-
+            type: 'array',
+            fields: [
+                {
+                    name: 'subParameters',
+                    label: 'Children',
+                    type: 'relationship',
+                    relationTo: 'parameters',
+                    hasMany: true,
+                    filterOptions: ({id}) => {
+                        return {
+                            id: {
+                                not_in: [id],
+                            },
+                        }
+                    },
+                },
+            ]
         },
         {
-            name: 'path-parameters',
+            name: 'pathparams',
             label: 'PathParameters',
-            type: 'text',
+            type: 'array',
+            fields: [
+                {
+                    name: 'subParameters',
+                    label: 'Children',
+                    type: 'relationship',
+                    relationTo: 'parameters',
+                    hasMany: true,
+                    filterOptions: ({id}) => {
+                        return {
+                            id: {
+                                not_in: [id],
+                            },
+                        }
+                    },
+                },
+            ]
         },
         {
-            name: 'query-parameters',
+            name: 'queryparams',
             label: 'QueryParameters',
-            type: 'text',
-
-
+            type: 'array',
+            fields: [
+                {
+                    name: 'subParameters',
+                    label: 'Children',
+                    type: 'relationship',
+                    relationTo: 'parameters',
+                    hasMany: true,
+                    filterOptions: ({id}) => {
+                        return {
+                            id: {
+                                not_in: [id],
+                            },
+                        }
+                    },
+                },
+            ]
         },
         {
-            name: 'slice-zone',
+            name: 'slicezone',
             label: 'SliceZone',
             type: 'array',
             fields: [
