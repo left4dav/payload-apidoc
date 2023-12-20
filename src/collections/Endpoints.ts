@@ -1,8 +1,5 @@
-import type { CollectionConfig } from 'payload/types'
-
-import richText from '../fields/richText'
-import label from '../fields/richText/label'
-import largeBody from '../fields/richText/largeBody'
+import type {CollectionConfig} from 'payload/types'
+import {Admonition} from "../blocks/Admonition";
 
 const Endpoints: CollectionConfig = {
   slug: 'endpoints',
@@ -14,92 +11,74 @@ const Endpoints: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
+      name: 'uid',
       type: 'text',
     },
     {
-      name: 'url',
-      type: 'text',
+      name: 'isObject',
+      type: 'checkbox',
+      defaultValue: false
+    },
+    {
+      name: 'title',
+      type: 'text'
     },
     {
       name: 'method',
       type: 'select',
       options: [
-        {
-          label: 'GET',
-          value: 'GET',
-        },
-        {
-          label: 'POST',
-          value: 'POST',
-        },
-        {
-          label: 'PUT',
-          value: 'PUT',
-        },
+        'GET',
+        'POST',
+        'PUT',
       ],
+      required: true,
+      defaultValue: 'GET'
     },
     {
-      name: 'lastUpdated',
-      type: 'date',
-      label: 'Last Updated',
-      defaultValue: () => {
-        return new Date()
-      },
-      admin: {
-        position: 'sidebar',
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-      },
+      name: 'allParametersAreOptional',
+      type: 'checkbox',
+      defaultValue: false
     },
-    richText({
-      admin: {
-        elements: ['h1', largeBody, label, 'link'],
-        leaves: [],
-      },
-    }),
+    {
+      name: 'url',
+      type: 'text'
+    },
     {
       name: 'attributes',
       label: 'Attributes',
-      type: 'relationship',
-      relationTo: 'attributes',
-      hasMany: true,
-      filterOptions: ({ id }) => {
-        return {
-          id: {
-            not_in: [id],
-          },
+      type: 'array',
+      fields: [
+        {
+          name: 'parameter',
+          type: 'relationship',
+          relationTo: 'parameter'
         }
-      },
+      ]
     },
     {
-      name: 'bodyParameters',
-      label: 'Body Parameters',
-      type: 'relationship',
-      relationTo: 'attributes',
-      hasMany: true,
-      filterOptions: ({ id }) => {
-        return {
-          id: {
-            not_in: [id],
-          },
+      name: 'attributes',
+      label: 'Attributes',
+      type: 'array',
+      fields: [
+        {
+          name: 'parameter',
+          type: 'relationship',
+          relationTo: 'parameter'
         }
-      },
+      ]
     },
     {
-      name: 'responses',
-      label: 'Responses',
-      type: 'relationship',
-      relationTo: 'responses',
-      hasMany: true,
-      filterOptions: ({ id }) => {
-        return {
-          id: {
-            not_in: [id],
-          },
-        }
-      },
+      name: 'slice-zone',
+      label: 'SliceZone',
+      type: 'array',
+      fields: [
+        {
+          name: 'layout',
+          blocks: [Admonition],
+          required: true,
+          type: 'blocks',
+        },
+      ]
     },
   ],
 }
