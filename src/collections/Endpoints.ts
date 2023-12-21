@@ -1,5 +1,6 @@
 import type {CollectionConfig} from 'payload/types'
 import {Admonition} from "../blocks/Admonition";
+import { HttpResponse } from '../blocks/HttpResponse'
 
 const Endpoints: CollectionConfig = {
     slug: 'endpoints',
@@ -65,7 +66,7 @@ const Endpoints: CollectionConfig = {
             ]
         },
         {
-            name: 'bodyparams',
+            name: 'bodyParams',
             label: 'BodyParameters',
             type: 'array',
             fields: [
@@ -86,7 +87,7 @@ const Endpoints: CollectionConfig = {
             ]
         },
         {
-            name: 'pathparams',
+            name: 'pathParams',
             label: 'PathParameters',
             type: 'array',
             fields: [
@@ -107,7 +108,7 @@ const Endpoints: CollectionConfig = {
             ]
         },
         {
-            name: 'queryparams',
+            name: 'queryParams',
             label: 'QueryParameters',
             type: 'array',
             fields: [
@@ -128,13 +129,34 @@ const Endpoints: CollectionConfig = {
             ]
         },
         {
+            name: 'sdkMethods',
+            label: 'SDK methods',
+            type: 'array',
+            fields: [
+                {
+                    name: 'sdkMethod',
+                    label: 'SDK method',
+                    type: 'relationship',
+                    relationTo: 'sdk-method',
+                    hasMany: false,
+                    filterOptions: ({id}) => {
+                        return {
+                            id: {
+                                not_in: [id],
+                            },
+                        }
+                    },
+                },
+            ]
+        },
+        {
             name: 'slicezone',
             label: 'SliceZone',
             type: 'array',
             fields: [
                 {
                     name: 'layout',
-                    blocks: [Admonition],
+                    blocks: [Admonition, HttpResponse],
                     required: true,
                     type: 'blocks',
                 },
